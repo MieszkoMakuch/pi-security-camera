@@ -4,11 +4,11 @@ import time
 import cv2
 from flask import Flask, render_template, Response
 
-from camera import VideoCamera
-from mail import sendEmail
+from camera import Camera
+from mail_config import sendEmail
 
 email_update_interval = 6  # sends an email only once in this time interval
-video_camera = VideoCamera(flip=False)  # creates a camera object, flip vertically
+video_camera = Camera(flip=False)  # creates a camera object, flip vertically
 
 fullbody_classifier_path = "models/fullbody_recognition_model.xml"
 facial_classifier_path = "models/facial_recognition_model.xml"
