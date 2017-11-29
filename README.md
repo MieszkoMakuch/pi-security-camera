@@ -12,12 +12,4 @@ TODO
 
 ## Running the Program
 
-Run the program
-
-```
-python main.py
-```
-
-You can view a live stream by visiting the ip address of your pi in a browser on the same network. 
-
-Visit `<raspberrypi_ip>:5000` in your browser to view the stream.
+TODO
