@@ -5,7 +5,7 @@ import numpy as np
 from imutils.video import VideoStream
 
 
-class VideoCamera(object):
+class Camera(object):
     def __init__(self, flip=False):
         self.vs = VideoStream(src=0)
         self.flip = flip

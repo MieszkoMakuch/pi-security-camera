@@ -1,5 +1,5 @@
 # USAGE
-# python multi_cam_motion.py
+# python multiple_cameras_test.py
 
 # import the necessary packages
 from __future__ import print_function
