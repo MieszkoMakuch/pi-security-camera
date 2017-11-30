@@ -10,6 +10,19 @@ from config import Config
 from mail_config import send_email
 
 email_update_interval = 60  # sends an email only once in this time interval
+
+cap = cv2.VideoCapture(0)
+# set width
+cap.set(3, 1280)
+# set height
+cap.set(4, 1024)
+
+cap = cv2.VideoCapture(1)
+# set width
+cap.set(3, 1280)
+# set height
+cap.set(4, 1024)
+
 video_camera_1 = Camera(flip=False, src=0)  # creates a camera object, flip vertically
 video_camera_2 = Camera(flip=False, src=1)  # creates a camera object, flip vertically
 
@@ -85,18 +98,6 @@ def video_feed2():
 if __name__ == '__main__':
     video_camera_1.vs.start()
     video_camera_2.vs.start()
-
-    cap = cv2.VideoCapture(0)
-    # set width
-    cap.set(3, 1280)
-    # set height
-    cap.set(4, 1024)
-
-    cap = cv2.VideoCapture(1)
-    # set width
-    cap.set(3, 1280)
-    # set height
-    cap.set(4, 1024)
 
     t = threading.Thread(target=check_for_objects, args=())
     t.daemon = True
