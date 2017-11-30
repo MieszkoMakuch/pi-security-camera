@@ -1,0 +1,170 @@
+/* Wide styles */
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background: #f9f9f9;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding-bottom: 30px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100% !important;
+    height: auto;
+}
+
+.btn, .btn-lg, .input-lg {
+    border-radius: 3px;
+}
+
+.form-control {
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0;
+}
+
+.input-lg {
+    height: 50px;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+    padding: 10px 28px;
+    height: 52px;
+}
+
+.btn-large {
+    font-size: 18px;
+    padding: 20px 50px;
+    margin: 5px 10px;
+}
+
+.btn-success {
+    background-color: rgba(108, 199, 108, 1.0);
+    background-image: none;
+    border: 0;
+    line-height: 1.8;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+    background-color: rgba(94, 182, 94, 1.0);
+    color: #fff;
+    border: 0;
+}
+
+/* Specific styles */
+.container.landing-page {
+    position: relative;
+    padding: 100px 15px;
+    text-align: center;
+}
+
+.container.article-page {
+    padding: 20px 85px 50px;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.8);
+    /*font-family: 'Lora', serif;*/
+    letter-spacing: 0.01rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.article {
+    padding-top: 30px;
+}
+
+tr td:first-child {
+    width: 15%;
+}
+
+tr td:last-child {
+    max-width: 700px;
+}
+
+.table {
+    margin-bottom: 20px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+/*
+Notification Template - V1.0
+Team - Mine Web Design
+Developed @ 05-01-2016
+follow us @minewebdesignn (twitter)
+*/
+
+.notify {
+    font-family: 'Hind Siliguri', open sans;
+}
+
+.title-notify {
+    padding: 0px 0px 15px;
+    text-align: center;
+}
+
+.panel-basic {
+    border-color: #ddd;
+    margin: 0 -85px 20px -85px;
+    background-color: #fff;
+}
+
+.panel-basic > .panel-heading {
+    border-color: #ddd;
+    padding: 20px 15px;
+}
+
+.panel-heading.soft {
+    background: #03A9F4;
+}
+
+.panel-heading.grip {
+    background: #F44336;
+}
+
+.panel-heading.hard {
+    background: #E91E63;
+}
+
+.notify-icon {
+    color: #fff;
+    padding: 0px 4px;
+    font-size: 4.7rem;
+}
+
+.notify-title-heading .heading {
+    font-size: 6.4rem;
+    color: #F0F8FF;
+    padding: 0px 3px;
+    font-weight: 500;
+}
+
+.notify-title-heading .close {
+    color: #F0F8FF;
+    opacity: 1;
+    font-weight: normal;
+}
+
+.notify-title-description {
+    color: #F0F8FF;
+    padding: 0px 65px;
+}
+
+.notify-description {
+    text-align: left;
+    padding: 20px 85px;
+}
+
+.notify-description p {
+    text-align: left;
+    padding: 0px 0px;
+    color: #7D7A7A;
+}
