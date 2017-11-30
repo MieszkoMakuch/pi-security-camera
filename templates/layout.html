@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Fake news detector - Demo</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- External Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Site -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/prism.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/prism.js') }}"></script>
+
+</head>
+<body>
+
+<section class="main">
+    {% block body %}{% endblock %}
+</section>
+
+<footer style=" margin: 0 65px">
+    <hr>
+    <p style=" text-align: center">Created by Mieszko Makuch. Check out my
+        <a href="https://github.com/MieszkoMakuch/fakenews-detector">Github</a>
+        repository.
+    </p>
+</footer>
+</body>
+</html>

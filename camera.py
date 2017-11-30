@@ -51,7 +51,7 @@ class Camera(object):
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
         ret, jpeg = cv2.imencode('.jpg', frame)
-        return (jpeg.tobytes(), found_objects)
+        return jpeg.tobytes(), found_objects
 
     @synchronized
     def get_objects(self, classifier, gray):
