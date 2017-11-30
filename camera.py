@@ -4,10 +4,22 @@ import cv2
 import numpy as np
 from imutils.video import VideoStream
 
+import threading
+
+
+def synchronized(func):
+    func.__lock__ = threading.Lock()
+
+    def synced_func(*args, **kws):
+        with func.__lock__:
+            return func(*args, **kws)
+
+    return synced_func
+
 
 class Camera(object):
-    def __init__(self, flip=False):
-        self.vs = VideoStream(src=0)
+    def __init__(self, flip=False, src=0):
+        self.vs = VideoStream(src=src)
         self.flip = flip
         time.sleep(2.0)
 
@@ -29,13 +41,7 @@ class Camera(object):
         frame = self.flip_if_needed(self.vs.read()).copy()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        objects = classifier.detectMultiScale(
-            gray,
-            scaleFactor=1.1,
-            minNeighbors=5,
-            minSize=(30, 30),
-            flags=cv2.CASCADE_SCALE_IMAGE
-        )
+        objects = self.get_objects(classifier, gray)
 
         if len(objects) > 0:
             found_objects = True
@@ -46,3 +52,14 @@ class Camera(object):
 
         ret, jpeg = cv2.imencode('.jpg', frame)
         return (jpeg.tobytes(), found_objects)
+
+    @synchronized
+    def get_objects(self, classifier, gray):
+        objects = classifier.detectMultiScale(
+            gray,
+            scaleFactor=1.1,
+            minNeighbors=5,
+            minSize=(30, 30),
+            flags=cv2.CASCADE_SCALE_IMAGE
+        )
+        return objects
