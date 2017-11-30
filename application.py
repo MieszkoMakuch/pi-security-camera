@@ -85,6 +85,19 @@ def video_feed2():
 if __name__ == '__main__':
     video_camera_1.vs.start()
     video_camera_2.vs.start()
+
+    cap = cv2.VideoCapture(0)
+    # set width
+    cap.set(3, 1280)
+    # set height
+    cap.set(4, 1024)
+
+    cap = cv2.VideoCapture(1)
+    # set width
+    cap.set(3, 1280)
+    # set height
+    cap.set(4, 1024)
+
     t = threading.Thread(target=check_for_objects, args=())
     t.daemon = True
     t.start()
