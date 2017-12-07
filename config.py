@@ -15,6 +15,7 @@ class Config(object):
 
     live_preview_with_detection = False
     send_email_notifications = False
+    email_send_interval = 60
 
     from_email = secret.from_email
     from_email_password = secret.from_email_password

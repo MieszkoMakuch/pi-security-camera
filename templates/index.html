@@ -9,43 +9,73 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form action="{{ url_for('show_article') }}" method=get>
-                <div class="form-group">
-                    {#                    <div class="col-md-12">#}
-                    {#                        <input class="form-control input-lg" type="url" name="url_to_clean"#}
-                    {#                               placeholder="URL of an article or domain">#}
-                    {#                    </div>#}
-                    {#                    <div class="col-md-12">#}
-                    {#                        <br/>#}
-                    {#                        <button class="btn btn-success btn-lg">Check</button>#}
-                    {#                    </div>#}
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.
-                            </small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Password">
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
-                                Check me out
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
 
-                    <img id="bg1" src="{{ url_for('video_feed1') }}">
-                    <img id="bg2" src="{{ url_for('video_feed2') }}">
+            {#            <form action="update_settings" method=get>#}
+            {#                <div class="form-group">#}
+            {#                    <div class="col-md-12">#}
+            {#                        <input class="form-control input-lg" name="url_to_clean"#}
+            {#                               placeholder="URL of an article or domain">#}
+            {#                    </div>#}
+            {#                    <div class="col-md-12">#}
+            {#                        <br/>#}
+            {#                        <button class="btn btn-success btn-lg">Check</button>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </form>#}
+
+            {#            <form action="{{ url_for('show_article') }}" method=get>#}
+            <form action="{{ url_for('index') }}" method="POST">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input class="form-control input-lg" name="url_to_clean"
+                               placeholder="URL of an article or domain">
+                    </div>
                 </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                           aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1"
+                           placeholder="Password">
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="send_email_notifications">
+                        Send email notifications
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="live_preview_with_detection">
+                        Enable live preview with detection
+                    </label>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-number-input" class="form-control">Sent email interval</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" value="42" id="example-number-input"
+                          name="email_send_interval" placeholder="Enter email interval"
+                        >
+                    </div>
+                </div>
+
+
+                    <button type="submit" class="btn btn-success btn-lg">Submit</button>
+
             </form>
+
+
+            <img id="bg1" src="{{ url_for('video_feed1') }}">
         </div>
     </div>
 {% endblock %}
