@@ -17,8 +17,8 @@ from config import Config
 def send_email(image):
     msg_root = MIMEMultipart('related')
     msg_root['Subject'] = 'Security Update'
-    msg_root['From'] = Config.from_email
-    msg_root['To'] = Config.to_email
+    msg_root['From'] = Config.email_sender_address
+    msg_root['To'] = Config.receiver_email_address
     msg_root.preamble = 'Raspberry pi security camera update'
 
     msg_alternative = MIMEMultipart('alternative')
@@ -35,6 +35,6 @@ def send_email(image):
 
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
     smtp.starttls()
-    smtp.login(Config.from_email, Config.from_email_password)
-    smtp.sendmail(Config.from_email, Config.to_email, msg_root.as_string())
+    smtp.login(Config.email_sender_address, Config.email_sender_password)
+    smtp.sendmail(Config.email_sender_address, Config.receiver_email_address, msg_root.as_string())
     smtp.quit()
