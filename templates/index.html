@@ -3,93 +3,116 @@
 
 
     <div class="container landing-page">
-    <div class="row" style="margin-bottom: 50px;">
-        <div class="col-md-8 col-md-offset-2">
-            <h1 style=" font-size: 6.4rem;">Smart security camera</h1>
+        <div class="row" style="margin-bottom: 50px;">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 style=" font-size: 6.4rem;">Smart security camera</h1>
+            </div>
         </div>
-    </div>
 
-    <div class="row" >
-        <div class="col-md-8">
-            <img id="bg1" src="{{ url_for('video_feed1') }}">
-        </div>
-        <div class="col-md-4">
-            <h1 class=" " style="    margin-top: 0;    margin-bottom: 20px;"><span
-                    style="    margin-top: -20px;    margin-bottom: 20px;"> Settings</span></h1>
-            <form action="{{ url_for('index') }}" method="POST">
-                <div class="form-row">
+        <div class="row">
+            <div class="col-md-8">
+                <img id="bg1" src="{{ url_for('video_feed1') }}">
+            </div>
+            <div class="col-md-4">
+                <h1 class=" " style="    margin-top: 0;    margin-bottom: 20px;"><span
+                        style="    margin-top: -20px;    margin-bottom: 20px;"> Settings</span></h1>
 
-                    <div class="form-group has-error">
-                        <label class="form-check-label control-label">
-                            <input type="checkbox" class="form-check-input " name="live_preview_with_detection">
-                            Enable live preview with object detection
-                        </label>
-                        <br>
-                        <small id="emailHelp" class="form-text text-muted control-label"><span
-                                class="glyphicon glyphicon-alert"></span> It may affect the frame rate
-                        </small>
-                    </div>
+                <form action="{{ url_for('index') }}" method="POST">
+                    <div class="form-row">
 
-                    <div class="form-group">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input collapsed" name="send_email_notifications"
-                                   data-toggle="collapse" data-target="#form-email-collapse" aria-expanded="false">
-                            Send email notifications
-                        </label>
-                    </div>
-
-                    <div id="form-email-collapse" class="table-responsive collapse" aria-expanded="false"
-                         style="height: 0px;">
-                        <div class="form-group">
-                            <label for="emailReceiver">Recipient's email address</label>
-                            <input type="email" class="form-control" id="emailReceiver" name="receiver_email_address"
-                                   aria-describedby="emailHelp" placeholder="Enter the recipient's email">
-                            <small id="emailHelp" class="form-text text-muted">Security alerts will be sent to this
-                                address
+                        <div class="form-group has-error">
+                            <label class="form-check-label control-label">
+                                <input type="checkbox" class="form-check-input " name="live_preview_with_detection">
+                                Enable live preview with object detection
+                            </label>
+                            <br>
+                            <small id="emailHelp" class="form-text text-muted control-label"><span
+                                    class="glyphicon glyphicon-alert"></span> It may affect the frame rate
                             </small>
                         </div>
-                        <div class="form-group">
 
-                            <label for="emailReceiver">Send alerts not more frequently than</label>
-                            <div class="col-10">
-                                <input class="form-control" type="number" id="example-number-input"
-                                       name="email_send_interval" placeholder="Enter number of seconds">
+                        <div class="form-group">
+                            <label>Specify what will trigger security alert:</label>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Face detection</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Full body detection</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" disabled="">Upper body detection</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" disabled="">Cat's face detection
+                                    (experimental)</label>
                             </div>
                         </div>
-                    </div>
-                    <button type="button" style="margin: 0px 0px 20px;"
-                            class="btn btn-default btn-warning btn-block" data-toggle="collapse"
-                            data-target="#form-advanced-collapse" aria-expanded="true">
-                        Show advanced settings
-                    </button>
-                    <div id="form-advanced-collapse" class="collapse" aria-expanded="false"
-                         style="height: 0px;">
 
                         <div class="form-group">
-                            <label for="emailReceiver">Sender's email address</label>
-                            <input type="email" class="form-control" id="emailSender" name="sender_email_address"
-                                   aria-describedby="emailHelp"
-                                   placeholder="Enter the sender's email ending with @gmail.com">
-                            <small id="emailHelp" class="form-text text-muted">Only Gamil service is supported
-                            </small>
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input collapsed"
+                                       name="send_email_notifications"
+                                       data-toggle="collapse" data-target="#form-email-collapse" aria-expanded="false">
+                                Send email notifications
+                            </label>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Sender's email password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Password">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.
-                            </small>
+
+                        <div id="form-email-collapse" class="table-responsive collapse" aria-expanded="false"
+                             style="height: 0px;">
+                            <div class="form-group">
+                                <label for="emailReceiver">Recipient's email address</label>
+                                <input type="email" class="form-control" id="emailReceiver"
+                                       name="receiver_email_address"
+                                       aria-describedby="emailHelp" placeholder="Enter the recipient's email">
+                                <small id="emailHelp" class="form-text text-muted">Security alerts will be sent to this
+                                    address
+                                </small>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="emailReceiver">Send alerts not more frequently than</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="number" id="example-number-input"
+                                           name="email_send_interval" placeholder="Enter number of seconds">
+                                </div>
+                            </div>
                         </div>
+
+                        <button type="button" style="margin: 0px 0px 20px;"
+                                class="btn btn-default btn-warning btn-block" data-toggle="collapse"
+                                data-target="#form-advanced-collapse" aria-expanded="true">
+                            Advanced settings
+                        </button>
+                        <div id="form-advanced-collapse" class="collapse" aria-expanded="false"
+                             style="height: 0px;">
+
+                            <div class="form-group">
+                                <label for="emailReceiver">Sender's email address</label>
+                                <input type="email" class="form-control" id="emailSender" name="sender_email_address"
+                                       aria-describedby="emailHelp"
+                                       placeholder="Enter the sender's email ending with @gmail.com">
+                                <small id="emailHelp" class="form-text text-muted">Only Gamil service is supported
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Sender's email password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                       placeholder="Password">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone
+                                    else.
+                                </small>
+                            </div>
+                        </div>
+
+
                     </div>
+                </form>
+                <button type="submit" class="btn btn-success btn-lg">Submit</button>
 
+            </div>
 
-                </div>
-            </form>
-            <button type="submit" class="btn btn-success btn-lg">Submit</button>
 
         </div>
-
-
     </div>
 {% endblock %}
