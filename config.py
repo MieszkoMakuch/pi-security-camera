@@ -17,6 +17,6 @@ class Config(object):
     send_email_notifications = False
     email_send_interval = 60
 
-    from_email = secret.from_email
-    from_email_password = secret.from_email_password
-    to_email = secret.to_email
+    email_sender_address = secret.from_email
+    email_sender_password = secret.from_email_password
+    receiver_email_address = secret.to_email

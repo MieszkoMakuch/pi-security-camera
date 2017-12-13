@@ -24,10 +24,10 @@ img {
 }
 
 .form-control {
-    border-radius: 3px;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border: 0;
+    /*border-radius: 3px;*/
+    /*-webkit-box-shadow: none;*/
+    /*box-shadow: none;*/
+    /*border: 0;*/
 }
 
 .input-lg {
@@ -61,8 +61,8 @@ img {
 /* Specific styles */
 .container.landing-page {
     position: relative;
-    padding: 100px 15px;
-    text-align: center;
+    padding: 50px 15px;
+    /*text-align: center;*/
 }
 
 .container.article-page {
