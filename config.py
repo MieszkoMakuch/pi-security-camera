@@ -20,7 +20,7 @@ class Config(object):
 
     classifierNameLocationDict = {
         # Face
-        'face_detection': {'description': 'Face detection (h',
+        'face_detection': {'description': 'Face detection (haarcascade)',
                            'location': 'models/haar/haarcascade_frontalface_default.xml'},
         'lbpcascade_frontalface_improved': {'description': 'Face detection (lbp)',
                                             'location': 'models/lbp/lbpcascade_frontalface_improved.xml'},
