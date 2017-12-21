@@ -94,7 +94,7 @@ def video_feed1():
 if __name__ == '__main__':
     video_camera_1.vs.start()
 
-    t = threading.Thread(target=check_for_objects, args=())
-    t.daemon = True
-    t.start()
+    # t = threading.Thread(target=check_for_objects, args=())
+    # t.daemon = True
+    # t.start()
     app.run(host='0.0.0.0', debug=False, threaded=True)
