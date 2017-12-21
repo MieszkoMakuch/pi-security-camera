@@ -42,10 +42,12 @@ class Config(object):
 
     classifier_name = 'face_detection'
     classifier = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
+    classifier2 = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
 
     def set_classifier(self, classifier_name):
         self.classifier_name = classifier_name
         self.classifier = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
+        self.classifier2 = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
 
     email_send_interval = 60
     email_sender_address = secret.from_email

@@ -76,7 +76,7 @@ def index():
 def gen(camera):
     while True:
         if config.live_preview_with_detection:
-            frame, found_obj = camera.get_object(config.classifier)
+            frame, found_obj = camera.get_object(config.classifier2)
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
         else:
@@ -94,7 +94,7 @@ def video_feed1():
 if __name__ == '__main__':
     video_camera_1.vs.start()
 
-    # t = threading.Thread(target=check_for_objects, args=())
-    # t.daemon = True
-    # t.start()
+    t = threading.Thread(target=check_for_objects, args=())
+    t.daemon = True
+    t.start()
     app.run(host='0.0.0.0', debug=False, threaded=True)
