@@ -53,7 +53,7 @@ class Camera(object):
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes(), found_objects
 
-    @synchronized
+    # @synchronized
     def get_objects(self, classifier, gray):
         objects = classifier.detectMultiScale(
             gray,
