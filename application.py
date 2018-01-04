@@ -11,6 +11,7 @@ from flask import Flask, render_template, Response, request
 from camera import Camera
 from config import Config
 from mail_config import send_email
+import time
 
 video_camera_1 = Camera(flip=False, src=0)  # creates a camera object, flip vertically
 
@@ -23,9 +24,13 @@ app = Flask(__name__)
 def check_for_objects():
     last_epoch = 0
     while True:
+        print("in while true")
         if config.send_email_notifications:
             frame, found_obj = video_camera_1.get_object(config.classifier)
             last_epoch = detect_object(found_obj, frame, last_epoch, camera_id="Cam1")
+        else:
+            print("before time.sleep")
+            time.sleep(1)
 
 
 def detect_object(found_obj, frame, last_epoch, camera_id="Cam1"):
