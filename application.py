@@ -97,6 +97,7 @@ def video_feed1():
 
 
 def stop_camera(camera):
+    print("Stopping camera..")
     camera.stop()
 
 
@@ -108,6 +109,6 @@ if __name__ == '__main__':
     t.start()
 
     # stop camera on exit
-    atexit.register(stop_camera, video_camera_1)
+    atexit.register(stop_camera, video_camera_1.vs)
 
     app.run(host='0.0.0.0', debug=False, threaded=True)
