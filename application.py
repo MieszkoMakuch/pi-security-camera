@@ -2,16 +2,16 @@ from __future__ import print_function
 from __future__ import print_function
 from __future__ import print_function
 from __future__ import print_function
+
+import atexit
 import threading
 import time
 
-import cv2
 from flask import Flask, render_template, Response, request
 
 from camera import Camera
 from config import Config
 from mail_config import send_email
-import time
 
 video_camera_1 = Camera(flip=False, src=0)  # creates a camera object, flip vertically
 
@@ -96,10 +96,18 @@ def video_feed1():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
+def stop_camera(camera):
+    camera.stop()
+
+
 if __name__ == '__main__':
     video_camera_1.vs.start()
 
     t = threading.Thread(target=check_for_objects, args=())
     t.daemon = True
     t.start()
+
+    # stop camera on exit
+    atexit.register(stop_camera, video_camera_1)
+
     app.run(host='0.0.0.0', debug=False, threaded=True)
