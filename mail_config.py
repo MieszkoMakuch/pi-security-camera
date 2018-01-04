@@ -11,14 +11,13 @@ from email.MIMEText import MIMEText
 # https://support.google.com/accounts/answer/185833?hl=en
 
 # Email you want to send the update to
-from config import Config
 
 
-def send_email(image):
+def send_email(image, config):
     msg_root = MIMEMultipart('related')
     msg_root['Subject'] = 'Security Update'
-    msg_root['From'] = Config.email_sender_address
-    msg_root['To'] = Config.receiver_email_address
+    msg_root['From'] = config.email_sender_address
+    msg_root['To'] = config.receiver_email_address
     msg_root.preamble = 'Raspberry pi security camera update'
 
     msg_alternative = MIMEMultipart('alternative')
@@ -35,6 +34,6 @@ def send_email(image):
 
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
     smtp.starttls()
-    smtp.login(Config.email_sender_address, Config.email_sender_password)
-    smtp.sendmail(Config.email_sender_address, Config.receiver_email_address, msg_root.as_string())
+    smtp.login(config.email_sender_address, config.email_sender_password)
+    smtp.sendmail(config.email_sender_address, config.receiver_email_address, msg_root.as_string())
     smtp.quit()
