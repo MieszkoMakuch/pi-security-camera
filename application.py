@@ -24,13 +24,11 @@ app = Flask(__name__)
 def check_for_objects():
     last_epoch = 0
     while True:
-        print("in while true")
         if config.send_email_notifications:
             frame, found_obj = video_camera_1.get_object(config.classifier)
             last_epoch = detect_object(found_obj, frame, last_epoch, camera_id="Cam1")
         else:
-            print("before time.sleep")
-            time.sleep(1)
+            time.sleep(2)
 
 
 def detect_object(found_obj, frame, last_epoch, camera_id="Cam1"):
@@ -75,7 +73,7 @@ def index():
 
         config.to_string()
 
-    return render_template('index.html', classifiers=config.classifierNameLocationDict)
+    return render_template('index.html', classifiers=config.classifierNameLocationDict, config=config)
 
 
 def gen(camera):

@@ -23,7 +23,11 @@
                         {#checkbox - live_preview_with_detection #}
                         <div class="form-group has-error">
                             <label class="form-check-label control-label">
-                                <input type="checkbox" class="form-check-input " name="live_preview_with_detection">
+                                <input type="checkbox" class="form-check-input " name="live_preview_with_detection"
+                                        {% if config.live_preview_with_detection %}
+                                       checked
+                                        {% endif %}
+                                >
                                 Enable live preview with object detection
                             </label>
                             <br>
@@ -38,7 +42,13 @@
                             {% for classifier, attributes in classifiers.items() %}
                                 <div class="radio">
                                     <label><input type="radio" name="classifier"
-                                                  value="{{ classifier }}">{{ attributes['description'] }}</label>
+                                                  value="{{ classifier }}"
+                                            {% if classifier == config.classifier_name %}
+                                                  checked
+                                            {% endif %}
+                                    >{{ attributes['description'] }}
+
+                                    </label>
                                 </div>
                             {% endfor %}
                         </div>
@@ -46,22 +56,30 @@
                         {#checkbox - send_email_notifications #}
                         <div class="form-group">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input collapsed"
+                                <input type="checkbox" class="form-check-input "
                                        name="send_email_notifications"
-                                       data-toggle="collapse" data-target="#form-email-collapse" aria-expanded="false">
+                                       data-toggle="collapse" data-target="#form-email-collapse" aria-expanded="true"
+                                        {% if config.send_email_notifications %}
+                                       checked
+                                        {% endif %}
+                                >
                                 Send email notifications
                             </label>
                         </div>
 
-                        <div id="form-email-collapse" class="table-responsive collapse" aria-expanded="false"
-                             style="height: 0px;">
+                        <div id="form-email-collapse" class="table-responsive collapse
+                        {% if config.send_email_notifications %}
+                           in
+                        {% endif %}"
+                        >
 
                             {# text input - receiver_email_address #}
                             <div class="form-group">
                                 <label for="emailReceiver">Receiver's email address</label>
                                 <input type="email" class="form-control" id="emailReceiver"
                                        name="receiver_email_address"
-                                       aria-describedby="emailHelp" placeholder="Enter the receiver's email">
+                                       aria-describedby="emailHelp" placeholder="Enter the receiver's email"
+                                       value="{{ config.receiver_email_address }}">
                                 <small id="emailHelp" class="form-text text-muted">Security alerts will be sent to this
                                     address
                                 </small>
@@ -72,7 +90,8 @@
                                 <label for="emailReceiver">Send alerts not more frequently than</label>
                                 <div class="col-10">
                                     <input class="form-control" type="number" id="example-number-input"
-                                           name="email_send_interval" placeholder="Enter number of seconds">
+                                           name="email_send_interval" placeholder="Enter number of seconds"
+                                           value="{{ config.email_send_interval }}">
                                 </div>
                             </div>
                         </div>
@@ -91,7 +110,8 @@
                                 <label for="emailReceiver">Sender's email address</label>
                                 <input type="email" class="form-control" id="emailSender" name="sender_email_address"
                                        aria-describedby="emailHelp"
-                                       placeholder="Sender's email ending with @gmail.com">
+                                       placeholder="Sender's email ending with @gmail.com"
+                                       value="{{ config.email_sender_address }}">
                                 <small id="emailHelp" class="form-text text-muted">Only Gmail service is supported
                                 </small>
                             </div>
@@ -102,8 +122,8 @@
                                 <input type="password" class="form-control" id="exampleInputPassword1"
                                        name="sender_email_password"
                                        placeholder="Password">
-                                <small id="emailHelp" class="form-text text-muted">We will never share your password with
-                                    anyone else.
+                                <small id="emailHelp" class="form-text text-muted">We will never share your password
+                                    with anyone else.
                                 </small>
                             </div>
                         </div>
@@ -114,7 +134,6 @@
                 </form>
 
             </div>
-
 
         </div>
     </div>
