@@ -36,8 +36,8 @@ def detect_object(found_obj, frame, last_epoch, camera_id="Cam1"):
         print("Detected object: %s" % camera_id)
         if (time.time() - last_epoch) > int(config.email_send_interval):
             last_epoch = time.time()
-            print("Sending email... Cam1")
-            send_email(frame)
+            print("Sending email to " + config.receiver_email_address + "...")
+            send_email(frame, config)
             print("done!")
     return last_epoch
 
@@ -59,7 +59,9 @@ def index():
         config.send_email_notifications = 'send_email_notifications' in request.form
         if config.send_email_notifications:
             receiver_email_address = request.form['receiver_email_address']
-            if receiver_email_address: config.receiver_email_address = receiver_email_address
+            if receiver_email_address:
+                print("setting config.receiver_email_address to " + receiver_email_address)
+                config.receiver_email_address = receiver_email_address
 
             email_send_interval = request.form['email_send_interval']
             if email_send_interval: config.email_send_interval = email_send_interval
