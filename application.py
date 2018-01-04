@@ -34,7 +34,7 @@ def check_for_objects():
 def detect_object(found_obj, frame, last_epoch, camera_id="Cam1"):
     if found_obj:
         print("Detected object: %s" % camera_id)
-        if (time.time() - last_epoch) > config.email_send_interval:
+        if (time.time() - last_epoch) > int(config.email_send_interval):
             last_epoch = time.time()
             print("Sending email... Cam1")
             send_email(frame)
