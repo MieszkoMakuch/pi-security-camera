@@ -16,6 +16,7 @@ from mail_config import send_email
 video_camera_1 = Camera(flip=False, src=0)  # creates a camera object, flip vertically
 
 config = Config()
+config.set_classifier(config.classifier_name)
 
 # App Globals (do not edit)
 app = Flask(__name__)
