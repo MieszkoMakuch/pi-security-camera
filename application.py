@@ -25,7 +25,10 @@ def check_for_objects():
     last_epoch = 0
     while True:
         if config.send_email_notifications:
-            frame, found_obj = video_camera_1.get_object(config.classifier)
+            if config.classifier_name == 'motion_detector':
+                frame, found_obj = video_camera_1.get_object_with_basic_motion_detection()
+            else:
+                frame, found_obj = video_camera_1.get_object(config.classifier)
             last_epoch = detect_object(found_obj, frame, last_epoch, camera_id="Cam1")
         else:
             time.sleep(2)
@@ -79,20 +82,23 @@ def index():
 
 
 def gen(camera):
-    total = 0
     while True:
-        if config.live_preview_with_detection:
-            frame, found_obj = camera.get_object(config.classifier2)
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-        elif False:
-            frame = camera.get_frame()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-        else:
-            frame, found_obj = camera.get_object_with_basic_motion_detection()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+        try:
+            if config.classifier_name == 'motion_detector':
+                frame, found_obj = camera.get_object_with_basic_motion_detection()
+                yield (b'--frame\r\n'
+                       b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+            elif config.live_preview_with_detection:
+                frame, found_obj = camera.get_object(config.classifier2)
+                yield (b'--frame\r\n'
+                       b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+            else:
+                frame = camera.get_frame()
+                yield (b'--frame\r\n'
+                       b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+        except Exception as e:
+            print(e)
+
 
 
 

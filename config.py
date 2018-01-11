@@ -19,6 +19,8 @@ class Config(object):
     send_email_notifications = False
 
     classifierNameLocationDict = {
+        'motion_detector': {'description': 'Motion detector'},
+
         # Face
         'face_detection': {'description': 'Face detection (haarcascade)',
                            'location': 'models/haar/haarcascade_frontalface_default.xml'},
@@ -46,8 +48,12 @@ class Config(object):
 
     def set_classifier(self, classifier_name):
         self.classifier_name = classifier_name
-        self.classifier = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
-        self.classifier2 = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
+        if classifier_name == 'motion_detector':
+            self.classifier = None
+            self.classifier2 = None
+        else:
+            self.classifier = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
+            self.classifier2 = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
 
     email_send_interval = 60
     email_sender_address = secret.from_email
