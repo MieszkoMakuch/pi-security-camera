@@ -22,22 +22,6 @@
             <form action="{{ url_for('index') }}" method="POST">
                 <div class="form-row">
 
-                    {#checkbox - live_preview_with_detection #}
-                    <div class="form-group has-error">
-                        <label class="form-check-label control-label">
-                            <input type="checkbox" class="form-check-input " name="live_preview_with_detection"
-                                    {% if config.live_preview_with_detection %}
-                                   checked
-                                    {% endif %}
-                            >
-                            Enable live preview with object detection
-                        </label>
-                        <br>
-                        <small id="emailHelp" class="form-text text-muted control-label"><span
-                                class="glyphicon glyphicon-alert"></span> It may affect the frame rate
-                        </small>
-                    </div>
-
                     {#radio - classifer #}
                     <div class="form-group">
                         <label>Specify what will trigger security alert:</label>
@@ -126,6 +110,22 @@
                                    placeholder="Password">
                             <small id="emailHelp" class="form-text text-muted">We will never share your password
                                 with anyone else.
+                            </small>
+                        </div>
+
+                        {#checkbox - live_preview_with_detection #}
+                        <div class="form-group has-error">
+                            <label class="form-check-label control-label">
+                                <input type="checkbox" class="form-check-input " name="live_preview_with_detection"
+                                        {% if config.live_preview_with_detection %}
+                                       checked
+                                        {% endif %}
+                                >
+                                Enable live preview with object detection
+                            </label>
+                            <br>
+                            <small id="emailHelp" class="form-text text-muted control-label"><span
+                                    class="glyphicon glyphicon-alert"></span> It may affect the frame rate
                             </small>
                         </div>
                     </div>
