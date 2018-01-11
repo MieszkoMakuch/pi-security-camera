@@ -43,8 +43,8 @@ class Config(object):
     }
 
     classifier_name = 'motion_detector'
-    classifier = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
-    classifier2 = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
+    classifier = None
+    classifier2 = None
 
     def set_classifier(self, classifier_name):
         self.classifier_name = classifier_name
