@@ -13,7 +13,7 @@ from camera import Camera
 from config import Config
 from mail_config import send_email
 
-video_camera_1 = Camera(flip=False, src=0)  # creates a camera object, flip vertically
+video_camera_1 = Camera(flip=False, src=1)  # creates a camera object, flip vertically
 
 config = Config()
 
@@ -79,15 +79,21 @@ def index():
 
 
 def gen(camera):
+    total = 0
     while True:
         if config.live_preview_with_detection:
             frame, found_obj = camera.get_object(config.classifier2)
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-        else:
+        elif False:
             frame = camera.get_frame()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+        else:
+            frame, found_obj = camera.get_object_with_basic_motion_detection()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
 
 
 @app.route('/video_feed1')

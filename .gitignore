@@ -96,3 +96,7 @@ ENV/
 .ropeproject
 
 /secret.py
+/static/img/logo.png
+/static/img/logo3.png
+/static/img/logo2.png
+/static/img/logo4.png

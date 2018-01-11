@@ -16,8 +16,10 @@ class BasicMotionDetector:
 
         # initialize the average image for motion detection
         self.avg = None
+        self.scanned_frames_counter = 0
 
     def update(self, image):
+        self.scanned_frames_counter += 1
         # initialize the list of locations containing motion
         locs = []
 

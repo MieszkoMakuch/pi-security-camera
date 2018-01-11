@@ -17,7 +17,7 @@ from pyimagesearch.basicmotiondetector import BasicMotionDetector
 # initialize the video streams and allow them to warmup
 print("[INFO] starting cameras...")
 
-number_of_cameras = int(sys.argv[1])
+number_of_cameras = int(1)
 
 cameras = list()
 
@@ -36,7 +36,7 @@ while True:
 
     camera = VideoStream(src=camera_id)
     camera.start()
-    motion_stream = BasicMotionDetector()
+    motion_stream = BasicMotionDetector(accumWeight=0.2, deltaThresh=5, minArea=500)
     cameras.append((camera, motion_stream))
     camera_id += 1
 
@@ -49,7 +49,7 @@ while True:
     # initialize the list of frames that have been processed
     frames = []
 
-    # loop over the frames and their respective motion detectors
+    # loop over the frames and their respective motionDetector detectors
     for (stream, motion) in cameras:
         # read the next frame from the video stream and resize
         # it to have a maximum width of 400 pixels
@@ -57,25 +57,25 @@ while True:
         frame = imutils.resize(frame, width=500)
 
         # convert the frame to grayscale, blur it slightly, update
-        # the motion detector
+        # the motionDetector detector
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         gray = cv2.GaussianBlur(gray, (21, 21), 0)
         locs = motion.update(gray)
 
-        # we should allow the motion detector to "run" for a bit
+        # we should allow the motionDetector detector to "run" for a bit
         # and accumulate a set of frames to form a nice average
         if total < 32:
             frames.append(frame)
             continue
 
-        # otherwise, check to see if motion was detected
+        # otherwise, check to see if motionDetector was detected
         if len(locs) > 0:
             # initialize the minimum and maximum (x, y)-coordinates,
             # respectively
             (minX, minY) = (np.inf, np.inf)
             (maxX, maxY) = (-np.inf, -np.inf)
 
-            # loop over the locations of motion and accumulate the
+            # loop over the locations of motionDetector and accumulate the
             # minimum and maximum locations of the bounding boxes
             for l in locs:
                 (x, y, w, h) = cv2.boundingRect(l)
@@ -89,7 +89,7 @@ while True:
         # update the frames list
         frames.append(frame)
 
-    # increment the total number of frames read and grab the
+    # increment the scanned_frames_counter number of frames read and grab the
     # current timestamp
     total += 1
     timestamp = datetime.datetime.now()
