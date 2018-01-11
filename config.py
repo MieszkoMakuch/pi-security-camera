@@ -42,7 +42,7 @@ class Config(object):
                                                      'location': 'models/lbp/lbpcascade_silverware.xml'}
     }
 
-    classifier_name = 'face_detection'
+    classifier_name = 'motion_detector'
     classifier = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
     classifier2 = cv2.CascadeClassifier(classifierNameLocationDict[classifier_name]['location'])
 
