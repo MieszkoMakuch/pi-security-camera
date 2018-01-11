@@ -32,17 +32,20 @@
 <body>
 
 <section class="main">
-    {% block body %}{% endblock %}
+
+    <div class="container landing-page" style="padding: 20px 15px">
+        {% block body %}{% endblock %}
+        <footer class="row" style="margin-top: 20px;">
+            <hr>
+            <p style=" text-align: center">Check out Pi Security Camera
+                <a href="https://github.com/MieszkoMakuch/pi-security-camera">Github repository</a>.
+            </p>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                    crossorigin="anonymous"></script>
+        </footer>
+    </div>
 </section>
 
-<footer style=" margin: 0 65px">
-    <hr>
-    <p style=" text-align: center">Check out Pi Security Camera
-        <a href="https://github.com/MieszkoMakuch/pi-security-camera">Github repository</a>.
-    </p>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-</footer>
 </body>
 </html>
