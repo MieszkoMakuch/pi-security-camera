@@ -13,7 +13,7 @@ from camera import Camera
 from config import Config
 from mail_config import send_email
 
-video_camera_1 = Camera(flip=False, src=1)  # creates a camera object, flip vertically
+video_camera_1 = Camera(flip=False, src=0)  # creates a camera object, flip vertically
 
 config = Config()
 
