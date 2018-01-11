@@ -26,19 +26,14 @@ cameras = list()
 #     motion_stream = BasicMotionDetector(minArea=5)
 #     cameras.append((camera, motion_stream))
 
-camera_id = 0
-while True:
+camera_id = 1
 
-    camera_is_available = cv2.VideoCapture().open(camera_id)
-    if not camera_is_available:
-        print("Available cameras: " + str(camera_id))
-        break
+camera_is_available = cv2.VideoCapture().open(camera_id)
 
-    camera = VideoStream(src=camera_id)
-    camera.start()
-    motion_stream = BasicMotionDetector()
-    cameras.append((camera, motion_stream))
-    camera_id += 1
+camera = VideoStream(src=camera_id)
+camera.start()
+motion_stream = BasicMotionDetector()
+cameras.append((camera, motion_stream))
 
 time.sleep(2.0)
 
@@ -50,24 +45,27 @@ while True:
     frames = []
 
     # loop over the frames and their respective motion detectors
-    for (stream, motion) in cameras:
-        # read the next frame from the video stream and resize
-        # it to have a maximum width of 400 pixels
-        frame = stream.read()
-        frame = imutils.resize(frame, width=500)
+# for (stream, motion) in cameras:
+    # read the next frame from the video stream and resize
+    # it to have a maximum width of 400 pixels
+    stream = camera
+    motion = motion_stream
 
-        # convert the frame to grayscale, blur it slightly, update
-        # the motion detector
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        gray = cv2.GaussianBlur(gray, (21, 21), 0)
-        locs = motion.update(gray)
+    frame = stream.read()
+    frame = imutils.resize(frame, width=500)
 
-        # we should allow the motion detector to "run" for a bit
-        # and accumulate a set of frames to form a nice average
-        if total < 32:
-            frames.append(frame)
-            continue
+    # convert the frame to grayscale, blur it slightly, update
+    # the motion detector
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.GaussianBlur(gray, (21, 21), 0)
+    locs = motion.update(gray)
 
+    # we should allow the motion detector to "run" for a bit
+    # and accumulate a set of frames to form a nice average
+    if total < 32:
+        frames.append(frame)
+
+    else:
         # otherwise, check to see if motion was detected
         if len(locs) > 0:
             # initialize the minimum and maximum (x, y)-coordinates,
@@ -103,15 +101,4 @@ while True:
         cv2.imshow("cam" + str(i), frame)
 
     # check to see if a key was pressed
-    key = cv2.waitKey(1) & 0xFF
-
-    # if the `q` key was pressed, break from the loop
-    if key == ord("q"):
-        break
-
-# do a bit of cleanup
-print("[INFO] cleaning up...")
-cv2.destroyAllWindows()
-
-for (camera, _) in cameras:
-    camera.stop()
+    cv2.waitKey(1) # potrzebne
