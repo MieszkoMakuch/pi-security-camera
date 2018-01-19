@@ -1,5 +1,5 @@
 # Raspberry Pi Smart Security Camera
-Security camera running open-cv for object detection. The camera will send an email with an image of any objects it detects. It also runs a server that provides a live video stream over the internet.
+Security camera running open-cv for object and motion detection. The camera will send an email with an image of any objects it detects. It also runs a server that provides a live video stream over the internet.
 
 Informations about:
 
@@ -13,11 +13,11 @@ are available under the *Functionality* section.
 ## Functionality
 ### Email notifications
 
-You can specify receiver's and sender email addres thouth web interface:
+You can specify receiver's and sender email address though web interface:
 
 ![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotifications.png)
 
-After detecting an object the camera will sent and email with a image previw.
+After detecting an object the camera will sent and email with a image preview.
 
 Email notification             |  Email with image preview
 :-------------------------:|:-------------------------:
@@ -25,7 +25,7 @@ Email notification             |  Email with image preview
 
 ### Object detection
 
-You can also what will trigger a security alert. Here are some examples:
+You can also specify what will trigger a security alert. Here are some examples:
 
 #### Motion detection
 ![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/MotionDetection.png)
@@ -34,7 +34,7 @@ You can also what will trigger a security alert. Here are some examples:
 #### Cat face detection
 ![CatFaceDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/CatFaceDetection.png)
 
-**Note that some of the available detectors are experimental and their accuracy leavs something to be desired. Particularly:**
+**Note that some of the available detectors are experimental and their accuracy leaves something to be desired. Particularly:**
 - Upper body detection
 - Smile detection
 - Silverware detection
@@ -49,7 +49,7 @@ This project uses a USB Camera to stream video. Before running the code, make su
 
 This project uses openCV to detect objects in the video feed. You can install openCV by using the following [tutorial](http://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/). In this project Python 2.7 version was used.
 
-The installation took about 1-2 hours on Raspberry Pi 3 Model B, but it would be considerably slower on a less powerful board like the Raspberry Pi Zero (it may eaven take about 8 hours).
+The installation took about 1-2 hours on Raspberry Pi 3 Model B, but it would be considerably slower on a less powerful board like the Raspberry Pi Zero (it may even take about 8 hours).
 
 The tutorial will prompt you to create a virtual environment. Make sure you are using the virtual environment by typing the following commands
 
@@ -95,7 +95,9 @@ Replace empty strings - `''` with with your own email/credentials. Application l
 
 Run the program
 
-```
+```bash
+source ~/.profile
+workon cv
 python application.py
 ```
 
@@ -103,4 +105,4 @@ You can view a live stream by visiting the ip address of your Raspberry Pi in a 
 
 Visit `<raspberrypi_ip>:5000` in your browser to view the stream.
 
-Note: To view the live stream on a different network than your Raspberry Pi, you can use [ngrok](https://ngrok.com/) to expose a local tunnel. Once downloaded, run ngrok with `./ngrok http 5000` and visit one of the generated links in your browser.
+Note: To view the live stream on a different network than your Raspberry Pi, you can use [ngrok](https://ngrok.com/) to expose a local tunnel. Once downloaded, run ngrok with `./ngrok http 5000` and visit one of the generated links in your browser. 
