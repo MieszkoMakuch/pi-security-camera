@@ -1,22 +1,39 @@
 # Raspberry Pi Smart Security Camera
 Security camera running open-cv for object detection. The camera will send an email with an image of any objects it detects. It also runs a server that provides a live video stream over the internet.
 
+## Functionality
+### Email notifications
+
+You can specify receiver's and sender email addres thouth web interface.
+
+![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotifications.png)
+
+After detecting an object the camera will sent and email with a image previw.
+
+Email notification             |  Email with image preview
+:-------------------------:|:-------------------------:
+![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotificationPhone.jpg)  |  ![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailPreview.jpg)
+
+### Object detection
+
+You can also what will trigger a security alert. Here are some examples:
+
+#### Motion detection
+![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/MotionDetection.png)
+#### Face detection
+![FaceDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/FaceDetection.png)
+#### Cat face detection
+![CatFaceDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/CatFaceDetection.png)
+
+**Note that some of the available detectors are experimental and their accuracy leavs something to be desired. Particularly:**
+- Upper body detection
+- Smile detection
+- Silverware detection
+
 
 ## Setup
 
-TODO
-
-## Installing Dependencies
-
-TODO
-
-## Running the Program
-
-TODO
-
-## Setup
-
-This project uses a USB Camera to stream video. Before running the code, make sure you have connected at least one USB Camera to your device.
+This project uses a USB Camera to stream video. Before running the code, make sure you have connected a USB Camera to your device.
 
 
 ## Installing Dependencies
