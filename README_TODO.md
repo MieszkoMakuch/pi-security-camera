@@ -74,53 +74,29 @@ from email.mime.image import MIMEImage
 print "" => print()
 ```
 
-## Customization
+## Saving email addresses
 
-To get emails when objects are detected, you'll need to make a couple modifications to the `mail.py` file.
-
-Open `mail.py` with vim `vim mail.py`, then press `i` to edit. Scroll down to the following section
-
-```
+If you don't wand to specify email addresses each time you run the app you can save them in `secret.py` file.
+```python
 # Email you want to send the update from (only works with gmail)
-fromEmail = 'myemail@gmail.com'
-fromEmailPassword = 'password1234'
+from_email = ''  # 'example@gmail.com' - must be a gmail account!
+from_email_password = ''  # 'password'
 
-# Email you want to send the update to
-toEmail = 'anotheremail@gmail.com'
+# Email you want to send the update to:
+to_email = ''  # 'example@example.com'
 ```
-and replace with your own email/credentials. The `mail.py` file logs into a gmail SMTP server and sends an email with an image of the object detected by the security camera. 
-
-Press `esc` then `ZZ` to save and exit.
-
-You can also modify the `main.py` file to change some other properties.
-
-```
-email_update_interval = 600 # sends an email only once in this time interval
-video_camera = VideoCamera(flip=True) # creates a camera object, flip vertically
-object_classifier = cv2.CascadeClassifier("models/fullbody_recognition_model.xml") # an opencv classifier
-```
-Notably, you can use a different object detector by changing the path `"models/fullbody_recognition_model.xml"` in `object_classifier = cv2.CascadeClassifier("models/fullbody_recognition_model.xml")`.
-
-to a new model in the models directory.
-
-```
-facial_recognition_model.xml
-fullbody_recognition_model.xml
-upperbody_recognition_model.xml
-```
+Replace empty strings - `''` with with your own email/credentials. Application logs into a gmail SMTP server and sends an email with an image of the object detected by the security camera.
 
 ## Running the Program
 
 Run the program
 
 ```
-python main.py
+python application.py
 ```
 
-You can view a live stream by visiting the ip address of your pi in a browser on the same network. You can find the ip address of your Raspberry Pi by typing `ifconfig` in the terminal and looking for the `inet` address. 
+You can view a live stream by visiting the ip address of your Raspberry Pi in a browser on the same network. You can find the ip address of your Raspberry Pi by typing `ifconfig` in the terminal and looking for the `inet` or `wlan` address.
 
 Visit `<raspberrypi_ip>:5000` in your browser to view the stream.
 
 Note: To view the live stream on a different network than your Raspberry Pi, you can use [ngrok](https://ngrok.com/) to expose a local tunnel. Once downloaded, run ngrok with `./ngrok http 5000` and visit one of the generated links in your browser.
-
-Note: The video stream will not start automatically on startup. To start the video stream automatically, you will need to run the program  from your `/etc/rc.local` file see this [video](https://youtu.be/51dg2MsYHns?t=7m4s) for more information about how to configure that.
