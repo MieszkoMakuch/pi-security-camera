@@ -1,7 +1,27 @@
 # Raspberry Pi Smart Security Camera
 Security camera running open-cv for object detection. The camera will send an email with an image of any objects it detects. It also runs a server that provides a live video stream over the internet.
 
+Informations about:
+
+- **Setup**
+- **Installing Dependencies**
+- **Saving email addresses**
+- **Running the Program**
+
+are available under the *Functionality* section.
+
 ## Functionality
+### Email notifications
+
+You can specify receiver's and sender email addres thouth web interface:
+
+![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotifications.png)
+
+After detecting an object the camera will sent and email with a image previw.
+
+Email notification             |  Email with image preview
+:-------------------------:|:-------------------------:
+![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotificationPhone.jpg)  |  ![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailPreview.jpg)
 
 ### Object detection
 
@@ -19,17 +39,6 @@ You can also what will trigger a security alert. Here are some examples:
 - Smile detection
 - Silverware detection
 
-### Email notifications
-
-You can specify receiver's and sender email addres thouth web interface.
-
-![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailSettings.png)
-
-After detecting an object the camera will sent and email with a image previw.
-
-Email notification             |  Email with image preview
-:-------------------------:|:-------------------------:
-![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotificationPhone.jpg)  |  ![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailPreview.jpg)
 
 ## Setup
 
@@ -51,27 +60,22 @@ workon cv
 
 Next, navigate to the repository directory
 
-```
-cd Smart-Security-Camera
+```bash
+cd pi-security-camera
 ```
 
 and install the dependencies for the project
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
-*Note: If you're running python3, you'll have to change the import statements at the top of the mail.py file*
+*Note: If you're running python3, you'll have to change the import statements at the top of the `mail_config.py` file*
 
-```
+```python
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-```
-*and change your print statements from quotes to parenthesis*
-
-```
-print "" => print()
 ```
 
 ## Saving email addresses
@@ -79,13 +83,13 @@ print "" => print()
 If you don't wand to specify email addresses each time you run the app you can save them in `secret.py` file.
 ```python
 # Email you want to send the update from (only works with gmail)
-from_email = ''  # 'example@gmail.com' - must be a gmail account!
+from_email = ''           # 'example@gmail.com' - must be a gmail account!
 from_email_password = ''  # 'password'
 
 # Email you want to send the update to:
-to_email = ''  # 'example@example.com'
+to_email = ''             # 'example@example.com'
 ```
-Replace empty strings - `''` with with your own email/credentials. Application logs into a gmail SMTP server and sends an email with an image of the object detected by the security camera.
+Replace empty strings - `''` with with your own email/credentials. Application logs into a gmail SMTP server and sends an email with an image of the object detected by the security camera..
 
 ## Running the Program
 
