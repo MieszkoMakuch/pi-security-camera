@@ -73,23 +73,13 @@
 
                         {# text input - email_send_interval #}
                         <div class="form-group">
-                            <label for="emailReceiver">Send alerts not more frequently than</label>
+                            <label for="emailReceiver">Send alerts not more frequently than (number of seconds)</label>
                             <div class="col-10">
                                 <input class="form-control" type="number" id="example-number-input"
                                        name="email_send_interval" placeholder="Enter number of seconds"
                                        value="{{ config.email_send_interval }}">
                             </div>
                         </div>
-                    </div>
-
-                    {# button - advanced settings #}
-                    <button type="button" style="margin: 0px 0px 20px;"
-                            class="btn btn-default btn-warning btn-block" data-toggle="collapse"
-                            data-target="#form-advanced-collapse" aria-expanded="true">
-                        Advanced settings
-                    </button>
-                    <div id="form-advanced-collapse" class="collapse" aria-expanded="false"
-                         style="height: 0px;">
 
                         {# text input - sender_email_address #}
                         <div class="form-group">
@@ -112,6 +102,16 @@
                                 with anyone else.
                             </small>
                         </div>
+                    </div>
+
+                    {# button - advanced settings #}
+                    <button type="button" style="margin: 0px 0px 20px;"
+                            class="btn btn-default btn-warning btn-block" data-toggle="collapse"
+                            data-target="#form-advanced-collapse" aria-expanded="true">
+                        Advanced settings
+                    </button>
+                    <div id="form-advanced-collapse" class="collapse" aria-expanded="false"
+                         style="height: 0px;">
 
                         {#checkbox - live_preview_with_detection #}
                         <div class="form-group has-error">

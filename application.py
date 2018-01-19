@@ -41,8 +41,11 @@ def detect_object(found_obj, frame, last_epoch, camera_id="Cam1"):
         if (time.time() - last_epoch) > int(config.email_send_interval):
             last_epoch = time.time()
             print("Sending email to " + config.receiver_email_address + "...")
-            send_email(frame, config)
-            print("done!")
+            try:
+                send_email(frame, config)
+                print("done!")
+            except Exception as e:
+                print('Error while sending email: ' + str(e))
     return last_epoch
 
 
