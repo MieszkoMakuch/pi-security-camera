@@ -10,8 +10,6 @@ from email.MIMEText import MIMEText
 # You can generate an app password here to avoid storing your password in plain text
 # https://support.google.com/accounts/answer/185833?hl=en
 
-# Email you want to send the update to
-
 
 def send_email(image, config):
     msg_root = MIMEMultipart('related')
