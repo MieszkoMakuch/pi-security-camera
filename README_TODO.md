@@ -2,17 +2,6 @@
 Security camera running open-cv for object detection. The camera will send an email with an image of any objects it detects. It also runs a server that provides a live video stream over the internet.
 
 ## Functionality
-### Email notifications
-
-You can specify receiver's and sender email addres thouth web interface.
-
-![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotifications.png)
-
-After detecting an object the camera will sent and email with a image previw.
-
-Email notification             |  Email with image preview
-:-------------------------:|:-------------------------:
-![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotificationPhone.jpg)  |  ![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailPreview.jpg)
 
 ### Object detection
 
@@ -30,6 +19,17 @@ You can also what will trigger a security alert. Here are some examples:
 - Smile detection
 - Silverware detection
 
+### Email notifications
+
+You can specify receiver's and sender email addres thouth web interface.
+
+![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailSettings.png)
+
+After detecting an object the camera will sent and email with a image previw.
+
+Email notification             |  Email with image preview
+:-------------------------:|:-------------------------:
+![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotificationPhone.jpg)  |  ![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailPreview.jpg)
 
 ## Setup
 
