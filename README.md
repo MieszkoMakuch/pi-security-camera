@@ -17,7 +17,7 @@ You can specify receiver's and sender email address though web interface:
 
 ![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotifications.png)
 
-After detecting an object the camera will sent and email with a image preview.
+After detecting an object the camera will sent and email with an image preview.
 
 Email notification             |  Email with image preview
 :-------------------------:|:-------------------------:
