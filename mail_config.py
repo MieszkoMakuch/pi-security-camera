@@ -8,7 +8,7 @@ from email.MIMEText import MIMEText
 def send_email(image, config):
     msg_root = MIMEMultipart('related')
     msg_root['Subject'] = 'Security Update'
-    msg_root['From'] = config.email_sender_address
+    msg_root['From'] = config.sender_email_address
     msg_root['To'] = config.receiver_email_address
     msg_root.preamble = 'Raspberry pi security camera update'
 
@@ -26,6 +26,6 @@ def send_email(image, config):
 
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
     smtp.starttls()
-    smtp.login(config.email_sender_address, config.email_sender_password)
-    smtp.sendmail(config.email_sender_address, config.receiver_email_address, msg_root.as_string())
+    smtp.login(config.sender_email_address, config.sender_email_password)
+    smtp.sendmail(config.sender_email_address, config.receiver_email_address, msg_root.as_string())
     smtp.quit()

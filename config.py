@@ -56,8 +56,8 @@ class Config(object):
             self.classifier2 = cv2.CascadeClassifier(self.classifierNameLocationDict[classifier_name]['location'])
 
     email_send_interval = 60
-    email_sender_address = secret.from_email
-    email_sender_password = secret.from_email_password
+    sender_email_address = secret.from_email
+    sender_email_password = secret.from_email_password
     receiver_email_address = secret.to_email
 
     def to_string(self):

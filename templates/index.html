@@ -73,11 +73,13 @@
 
                         {# text input - email_send_interval #}
                         <div class="form-group">
-                            <label for="emailReceiver">Send alerts not more frequently than (number of seconds)</label>
+                            <label for="emailReceiver">Send alerts not more frequently than</label>
                             <div class="col-10">
                                 <input class="form-control" type="number" id="example-number-input"
                                        name="email_send_interval" placeholder="Enter number of seconds"
                                        value="{{ config.email_send_interval }}">
+                                <small id="help" class="form-text text-muted">Enter number of seconds
+                                </small>
                             </div>
                         </div>
 
@@ -87,8 +89,12 @@
                             <input type="email" class="form-control" id="emailSender" name="sender_email_address"
                                    aria-describedby="emailHelp"
                                    placeholder="Sender's email ending with @gmail.com"
-                                   value="{{ config.email_sender_address }}">
-                            <small id="emailHelp" class="form-text text-muted">Only Gmail service is supported
+                                   value="{{ config.sender_email_address }}">
+                            <small id="emailHelp" class="form-text text-muted">Only Gmail service is supported. Make
+                                sure that
+                                <a href="https://support.google.com/accounts/answer/6010255">less secure apps can access
+                                    your Gmail account
+                                </a>
                             </small>
                         </div>
 
