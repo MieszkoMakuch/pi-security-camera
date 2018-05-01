@@ -1,5 +1,5 @@
 # Raspberry Pi Smart Security Camera
-Security camera running open-cv for object and motion detection. The camera will send an email with an image of any objects it detects. It also runs a server that provides a web interface with live stream video.
+Security camera running OpenCV for object and motion detection. The camera will send email with image of any objects it detects. It also runs a server that provides web interface with live stream video.
 
 Informations about:
 
@@ -13,11 +13,11 @@ are available under the *Functionality* section.
 ## Functionality
 ### Email notifications
 
-You can specify receiver's and sender email address though web interface:
+You can specify receiver's and sender's email address though web interface:
 
 ![emailNotifications](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/emailNotifications.png)
 
-After detecting an object the camera will sent and email with an image preview.
+After detecting an object the camera will send an email with image preview.
 
 Email notification             |  Email with image preview
 :-------------------------:|:-------------------------:
@@ -25,7 +25,7 @@ Email notification             |  Email with image preview
 
 ### Object detection
 
-You can also specify what will trigger a security alert. Here are some examples:
+You can also specify what will trigger the security alert. Here are some examples:
 
 #### Motion detection
 ![MotionDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/MotionDetection.png)
@@ -34,7 +34,7 @@ You can also specify what will trigger a security alert. Here are some examples:
 #### Cat face detection
 ![CatFaceDetection](https://raw.githubusercontent.com/MieszkoMakuch/pi-security-camera/master/readme_files/CatFaceDetection.png)
 
-**Note that some of the available detectors are experimental and their accuracy leaves something to be desired. Particularly:**
+**Note that some of the available detectors are experimental and their accuracy leaves a space for a future improvement. Particularly:**
 - Upper body detection
 - Smile detection
 - Silverware detection
